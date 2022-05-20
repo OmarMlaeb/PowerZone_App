@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 import { AlertController } from '@ionic/angular';
 
 @Component({
@@ -10,7 +11,7 @@ import { AlertController } from '@ionic/angular';
 })
 export class SignupPage implements OnInit {
 
-  constructor(private router: Router, private alertController: AlertController) {
+  constructor(private router: Router, private service: UserService, private alertController: AlertController) {
 
   }
 
@@ -81,22 +82,12 @@ export class SignupPage implements OnInit {
     await alert.present();
   }
 
-  async showAlertFailUserType(){
-    const alert = await this.alertController.create({
-      header: 'User type is required',
-      message: 'Please select a user type',
-      buttons: ['OK']
-    });
-    await alert.present();
-  }
-
   public onSignup(form: NgForm){
     const first_name = form.value.first_name;
     const last_name = form.value.last_name;
     const email_address = form.value.email_address;
     const password = form.value.password;
     const phone_number = form.value.phone_number;
-    const user_type = form.value.user_type;
 
     if(first_name == ''){
       this.showAlertFailFirstName();
@@ -123,10 +114,16 @@ export class SignupPage implements OnInit {
       return;
     }
 
-    if(user_type == ''){
-      this.showAlertFailUserType();
-      return;
-    }
+    const user = form.value;
+    this.service.addAccount(user).subscribe(response =>{
+      if(response != null){
+        this.showAlertSuccess();
+        this.router.navigate(['/tab1']);
+      }
+      else{
+        this.showAlertFail();
+      }
+    });
 
   }
 
