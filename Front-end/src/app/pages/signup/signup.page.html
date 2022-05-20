@@ -1,9 +1,44 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>signup</ion-title>
+    <ion-title style="font-size: 30px;">Create Account</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
 
+<ion-content>
+  <div class="centered-content">
+    <ion-card class="signup">
+      <ion-card-header>
+        <ion-card-title class="center-item">Welcome to <br> Power Zone App</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <form #f="ngForm" (ngSubmit)="onSignup(f)">
+          <ion-item>
+            <ion-input ngModel type="text" name="first_name" placeholder="First Name" required></ion-input>
+          </ion-item>
+          <br>
+          <ion-item>
+            <ion-input ngModel type="text" name="last_name" placeholder="Last Name" required></ion-input>
+          </ion-item>
+          <br>
+          <ion-item>
+            <ion-input ngModel type="email" name="email_address" placeholder="Email Address" required></ion-input>
+          </ion-item>
+          <br>
+          <ion-item>
+            <ion-input ngModel type="tel" name="phone_number" placeholder="Mobile Number" required></ion-input>
+          </ion-item>
+          <br>
+          <ion-item>
+            <ion-input ngModel type="password" name="password" placeholder="Password" required></ion-input>
+          </ion-item>
+          <br>
+          <ion-button type="submit" class="signup-button">Signup</ion-button>
+          <br>
+          <ion-text [routerLink]="['/login']" class="gotoLogin">Already have Account? Login here.</ion-text>
+        </form>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>
