@@ -47,7 +47,26 @@ export class LoginPage implements OnInit {
   }
 
   public onLogin(form : NgForm){
-  
+    const email_address = form.value.email_address;
+    const password = form.value.password;
+    if(email_address == ''){
+      this.showAlertFailEmail();
+    } else{
+      if(password == '')
+        this.showAlertFailPassword();
+    }
+    
+    if(email_address != '' && password != ''){
+      const user = form.value;
+      this.service.checkUser(user).subscribe(response =>{
+        if(response != null){
+          localStorage.setItem('user_id', String(response));
+          this.router.navigate(['/tabs/tab1']);
+        } else{
+          this.showAlertFail();
+        }
+      });
+    }
   }
 
 }

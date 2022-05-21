@@ -28,4 +28,9 @@ export class UserService {
     return this.http.post(this.url + 'signup.php', user);
   }
 
+  // check if user already have an account 
+  checkUser(user : User){
+    return this.http.post(this.url + 'login.php', user);
+  }
+
 }
