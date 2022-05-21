@@ -12,7 +12,6 @@ $last_name = $data->last_name;
 $email_address = $data->email_address;
 $phone_number = $data->phone_number;
 $password = hash("sha256", $data->password);
-$user_type = $data->user_type;
 
 $query = $mysqli->prepare("SELECT email_address FROM users WHERE email_address = ?");
 $query->bind_param("s", $email_address);
