@@ -118,7 +118,7 @@ export class SignupPage implements OnInit {
     this.service.addAccount(user).subscribe(response =>{
       if(response != null){
         this.showAlertSuccess();
-        this.router.navigate(['/tab1']);
+        this.router.navigate(['/tabs/tab1']);
       }
       else{
         this.showAlertFail();
