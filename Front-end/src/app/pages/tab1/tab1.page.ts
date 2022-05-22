@@ -45,6 +45,19 @@ export class Tab1Page implements OnInit {
 
     this.setGreeting();
 
+    // calls the api every 15 minutes
+    setInterval(data=> {
+      this.service.getQuote().subscribe(response => {
+        this.quote_of_the_day = response;
+        this.quote = this.quote_of_the_day['quote'];
+        this.person = this.quote_of_the_day['person'];
+  
+        console.log(response);
+      })
+  
+      this.setGreeting();
+    }, 900000);
+
   }
 
 }
