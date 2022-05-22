@@ -5,19 +5,19 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-card>
-
-    <ion-card-title class="centered">
+  <div class="center">
+  <ion-card class="card_design">
+    <ion-card-title class="greeting">
       {{greeting}}
     </ion-card-title>
-
-    <ion-card-title *ngIf="person" id="quote">
+    <br>
+    <ion-card-title *ngIf="person" id="quote" class="quote">
       <q>{{quote}}</q>
     </ion-card-title>
-
-    <p *ngIf="person">
+    <br>
+    <p *ngIf="person" class="writer">
       {{person}}
     </p>
-    
   </ion-card>
+</div>
 </ion-content>
