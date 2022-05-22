@@ -1,17 +1,23 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+    <ion-title style="font-size: 30px;">Home</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+    <ion-card-title class="centered">
+      {{greeting}}
+    </ion-card-title>
+
+    <ion-card-title *ngIf="person" id="quote">
+      <q>{{quote}}</q>
+    </ion-card-title>
+
+    <p *ngIf="person">
+      {{person}}
+    </p>
+    
+  </ion-card>
 </ion-content>
