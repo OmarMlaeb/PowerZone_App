@@ -6,4 +6,58 @@
 
 <ion-content [fullscreen]="true">
 
+  <ion-item>
+    <ion-button class="btn1" (click)="initModal()"> This Month's Fees </ion-button>
+    <ion-button class="btn2" (click)="initAttendanceModal()"slot="end"> Attendance </ion-button>
+  </ion-item>
+
+  <ion-grid id="header">
+    <ion-row>
+
+      <ion-col>
+        <div> Name </div>
+      </ion-col>
+
+      <ion-col>
+        <div> Date </div>
+      </ion-col>
+
+      <ion-col>
+        <div> Session Type </div>
+      </ion-col>
+
+      <ion-col>
+        <div> Fees ($) </div>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngFor="let fee of fees">
+    <ion-row>
+
+      <ion-col>
+        <div> {{fee.customer}} </div>
+      </ion-col>
+
+      <ion-col>
+        <div> {{fee.date}} </div>
+      </ion-col>
+
+      <ion-col>
+        <div> {{fee.type}} </div>
+      </ion-col>
+
+      <ion-col>
+        <div> {{fee.amount}} </div>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+  <ion-item *ngFor="let t of total">
+    <ion-label slot="start"> Total Fees: </ion-label>
+    <ion-label slot="end"> {{t}} $ </ion-label>
+  </ion-item>
+
 </ion-content>
