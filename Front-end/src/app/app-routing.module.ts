@@ -13,6 +13,14 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'attendance',
+    loadChildren: () => import('./pages/attendance/attendance.module').then( m => m.AttendancePageModule)
+  },
+  {
+    path: 'total-fees',
+    loadChildren: () => import('./pages/total-fees/total-fees.module').then( m => m.TotalFeesPageModule)
   }
 ];
 @NgModule({

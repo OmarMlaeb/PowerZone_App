@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-
+import { ModalController } from '@ionic/angular';
+import { FeesService, Fee, monthlyFee } from '../../services/fees.service';
 @Component({
   selector: 'app-tab3',
   templateUrl: 'tab3.page.html',
@@ -7,6 +8,14 @@ import { Component } from '@angular/core';
 })
 export class Tab3Page {
 
-  constructor() {}
+  constructor(private service: FeesService, public modalCtrl: ModalController) {
+
+  }
+
+  modalDataResponse: any;
+
+  fees: Fee[];
+  total: number[];
+  monthly: monthlyFee[];
 
 }
